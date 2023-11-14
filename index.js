@@ -27,7 +27,7 @@ function checkGuess() {
   guesses.textContent = `${guesses.textContent} ${userGuess}`;
 
   if (userGuess === randomNumber) {
-    lastResult.textContent = "Congratulations! You got it right";
+    lastResult.textContent = `Congratulations, You got it right! ${randomNumber} is what we've picked!`;
     lastResult.style.backgroundColor = "#04844B";
     lowOrHi.style.backgroundColor = "white";
     lowOrHi.textContent = "";
