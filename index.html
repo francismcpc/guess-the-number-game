@@ -14,14 +14,19 @@
   <body>
     <div class="container">
       <h1>Number Guessing Game</h1>
-      <small>Coded by Francis Macaspac</small>
       <p class="rules">
         We've picked a number at random from 1 to 100. Try to guess it within 10
         attempts. We'll provide feedback on whether your guess is too high or
         too low.
       </p>
       <div class="form">
-        <label for="guessField">Enter a guess: </label>
+        <div class="labelWrapper">
+          <label for="guessField">Enter a guess: </label>
+          <div>
+            <span>❤️</span>
+            <span class="lives"></span>
+          </div>
+        </div>
         <input
           type="number"
           min="1"

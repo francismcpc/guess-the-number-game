@@ -15,12 +15,20 @@ const lastResult = document.querySelector(".lastResult");
 const lowOrHi = document.querySelector(".lowOrHi");
 const guessSubmit = document.querySelector(".guessSubmit");
 const guessField = document.querySelector(".guessField");
+const lives = document.querySelector(".lives");
 
 let guessCount = 1;
+let livesCount = 10;
 let resetBtn;
-
+lives.textContent = `${livesCount}`;
 function checkGuess() {
   const userGuess = Number(guessField.value);
+  if (userGuess < 1 || userGuess > 100) {
+    alert("Please enter a number between 1 and 100");
+    guessField.value = "";
+    guessField.focus();
+    return;
+  }
   if (guessCount === 1) {
     guesses.textContent = "Previous Guesses :";
   }
@@ -49,6 +57,7 @@ function checkGuess() {
     lastResult.style.padding = "16px";
     lastResult.style.fontSize = "0.875rem";
     lastResult.style.borderRadius = "4px";
+
     if (userGuess < randomNumber) {
       lowOrHi.textContent = "Last guess was too low!";
       lowOrHi.style.backgroundColor = "#FEE3E1";
@@ -69,6 +78,8 @@ function checkGuess() {
   guessCount++;
   guessField.value = "";
   guessField.focus();
+  livesCount--;
+  lives.textContent = `${livesCount}`;
 }
 
 guessSubmit.addEventListener("click", checkGuess);
@@ -93,7 +104,8 @@ function setGameOver() {
 
 function resetGame() {
   guessCount = 1;
-
+  livesCount = 10;
+  lives.textContent = `${livesCount}`;
   const resetParas = document.querySelectorAll(".resultParas p");
   for (const resetPara of resetParas) {
     resetPara.textContent = "";
